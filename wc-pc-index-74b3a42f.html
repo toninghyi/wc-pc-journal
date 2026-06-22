@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>稳定入口 · 世界杯信息页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f2eb;
+            font-family: 'Georgia', 'Noto Serif SC', 'Times New Roman', serif;
+            color: #2b2b2b;
+            line-height: 1.7;
+            padding: 2.5rem 1.2rem;
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        .paper {
+            background: #fcf9f4;
+            border-radius: 20px;
+            padding: 2.8rem 2.2rem 2.2rem;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0,0,0,0.02);
+            border: 1px solid #e7ddd0;
+        }
+
+        .opening {
+            font-size: 1.8rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: #3a322a;
+            border-left: 5px solid #b49a7c;
+            padding-left: 1.4rem;
+            margin-bottom: 2.2rem;
+            line-height: 1.4;
+        }
+
+        .opening small {
+            font-size: 1rem;
+            color: #8a7b6a;
+            display: block;
+            margin-top: 0.5rem;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
+
+        .lead {
+            font-size: 1.08rem;
+            margin-bottom: 1.8rem;
+            color: #3f3d39;
+            text-indent: 2em;
+        }
+
+        .lead a {
+            color: #7b5f3f;
+            text-decoration: none;
+            border-bottom: 1px solid #d6c6b3;
+            transition: border-color 0.2s, color 0.2s;
+            font-weight: 500;
+        }
+
+        .lead a:hover {
+            border-bottom-color: #7b5f3f;
+            color: #4d3a28;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem 1.5rem;
+            margin: 2.8rem 0 2.2rem;
+        }
+
+        .feature-item {
+            background: #f6f1ea;
+            border-radius: 16px;
+            padding: 1.2rem 1.4rem;
+            border: 1px solid #e1d5c5;
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-item:hover {
+            background: #efe8de;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+
+        .feature-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #423b33;
+            margin-bottom: 0.3rem;
+            letter-spacing: 0.5px;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #4f4a43;
+            margin-top: 0.15rem;
+        }
+
+        .pull-quote {
+            background: #efe7dc;
+            padding: 1.2rem 1.8rem;
+            border-radius: 12px;
+            margin: 2rem 0 1.8rem;
+            border-left: 6px solid #b49a7c;
+            font-style: normal;
+            color: #2f2b26;
+            font-size: 1.02rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .pull-quote::before {
+            content: "“";
+            font-size: 2.8rem;
+            line-height: 1;
+            color: #b49a7c;
+            font-family: 'Georgia', serif;
+            margin-top: -0.1rem;
+        }
+
+        .pull-quote p {
+            flex: 1;
+            margin: 0;
+        }
+
+        .context-box {
+            background: #fcf9f4;
+            border: 1px dashed #cdbeaa;
+            border-radius: 14px;
+            padding: 1.4rem 1.8rem;
+            margin: 2.2rem 0 2rem;
+            font-size: 0.98rem;
+        }
+
+        .context-box dt {
+            font-weight: 600;
+            color: #4f3f2c;
+            margin-bottom: 0.2rem;
+            font-size: 1rem;
+        }
+
+        .context-box dd {
+            margin-left: 0.2rem;
+            margin-bottom: 0.8rem;
+            color: #4b4540;
+            line-height: 1.6;
+        }
+
+        .context-box dd:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .gentle-end {
+            margin-top: 2.8rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #e1d5c5;
+            font-size: 0.98rem;
+            color: #4f4a43;
+            text-align: center;
+            letter-spacing: 0.4px;
+        }
+
+        .gentle-end a {
+            color: #7b5f3f;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #d6c6b3;
+            font-weight: 500;
+        }
+
+        .gentle-end a:hover {
+            text-decoration-color: #7b5f3f;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .paper {
+                padding: 1.8rem 1.2rem 1.5rem;
+                border-radius: 14px;
+            }
+            .opening {
+                font-size: 1.5rem;
+                padding-left: 1rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .pull-quote {
+                flex-direction: column;
+                padding: 1rem 1.2rem;
+            }
+            .pull-quote::before {
+                font-size: 2.2rem;
+                margin-top: -0.2rem;
+            }
+            .context-box {
+                padding: 1rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .opening {
+                font-size: 1.3rem;
+            }
+            .lead {
+                font-size: 1rem;
+                text-indent: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="paper">
+
+    <div class="opening">
+        从一处稳定的入口开始。
+        <small>一个关于世界杯信息页面的简短叙事</small>
+    </div>
+
+    <p class="lead">
+        在众多与足球相关的页面中，人们常常需要寻找一个清晰、可靠的起点。
+        许多时候，我们需要的首先是一个定义明确、页面结构稳定的参考节点。
+        这便是 <a href="https://wc-pc-fifa.com">世界杯</a> 信息页所扮演的角色：
+        它不急于提供大量动态内容，而是以简洁的布局和经过梳理的条目，
+        让浏览者快速理解当前页面的定位与范围。
+    </p>
+
+    <div class="feature-grid">
+        <div class="feature-item">
+            <h3>结构稳定</h3>
+            <p>页面以静态文档为主，版式与导航层次清晰，不依赖频繁变动的模块，方便快速定位核心信息。</p>
+        </div>
+        <div class="feature-item">
+            <h3>信息密度适中</h3>
+            <p>不堆积冗长段落，段落间留有阅读节奏。每个区块均有明确功能，避免无关干扰。</p>
+        </div>
+        <div class="feature-item">
+            <h3>说明性优先</h3>
+            <p>页面侧重对自身内容、背景及使用方式的说明，而非宣传或引导。读者可自行判断信息价值。</p>
+        </div>
+        <div class="feature-item">
+            <h3>轻量响应</h3>
+            <p>采用基础文章排版与米白底色，字体、间距、引用均围绕可读性设计，在多数屏幕下保持一致的浏览体验。</p>
+        </div>
+    </div>
+
+    <div class="pull-quote">
+        <p>一个页面不必承载所有功能。它只需要在恰当的时候，给出恰好的说明与入口。剩下的，交给浏览者自己决定。</p>
+    </div>
+
+    <dl class="context-box">
+        <dt>页面场景</dt>
+        <dd>适合作为世界杯相关信息的静态索引页 —— 不依赖实时数据，也不堆叠外部链接。页面本身即是一份完整的说明文档。</dd>
+        <dt>FAQ 摘要</dt>
+        <dd>Q: 这个页面是官方网站吗？<br> A: 它是一个独立的信息介绍页，其中包含指向 <a href="https://wc-pc-fifa.com" style="color:#7b5f3f; text-decoration: underline; text-underline-offset:2px;">世界杯</a> 的链接，用于提供稳定的参考入口。</dd>
+        <dd>Q: 页面内容会频繁更新吗？<br> A: 设计上倾向于保持内容稳定，以说明性文字为主，不追求实时新闻式更新。</dd>
+    </dl>
+
+    <div class="gentle-end">
+        无论你是初次接触，还是需要快速回顾页面框架，<br>
+        这里始终保留着一个简洁的叙述起点。<br>
+        更多信息可参阅 <a href="https://wc-pc-fifa.com">世界杯</a> 主页面。
+    </div>
+
+</div>
+</body>
+</html>
